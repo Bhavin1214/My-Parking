@@ -41,7 +41,16 @@ export const UserSidebar = ({clicked}) => {
                 className=""
                 data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYScroll"
                 tabIndex={-1}
-                
+                style={{
+                  marginRight: "-16px",
+                  marginBottom: "-16px",
+                  marginLeft: 0,
+                  top: "-8px",
+                  right: "auto",
+                  left: "-8px",
+                  width: "calc(100% + 16px)",
+                  padding: 8,
+                }}
               >
                 <nav className="mt-2">
                   <ul className="nav sidebar-menu flex-column " role="menu" data-accordion="false">
