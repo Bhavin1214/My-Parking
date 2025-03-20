@@ -34,9 +34,14 @@ function App() {
 
   axios.defaults.baseURL = "http://localhost:3000"
 
+  const [isopen, setisopen] = useState(true)
+  const clicked = ()=>{
+    setisopen(!isopen)
+  }
+
   return (
     <>
-      <body>
+      <body className={`${isopen ?"":"sidebar-collapse sidebar-mini"}`}>
         <div className={location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" ? "" : "app-wrapper"}>
           <Routes>
             <Route path='/' element={<LandingPage></LandingPage>}></Route>
@@ -44,7 +49,7 @@ function App() {
             <Route path="/signup" element={<Signup></Signup>}></Route>
 
             <Route to="" element={<PrivateRoute/>} >
-              <Route path="/user" element={<UserSidebar />}>
+              <Route path="/user" element={<UserSidebar clicked={clicked} />}>
                 <Route path='' element={<ParkingOverview />}></Route>
                 <Route path='book-slot' element={<UserBookSlot></UserBookSlot>}></Route>
                 <Route path='View-booking' element={<ViewCurrentBooking/>}></Route>

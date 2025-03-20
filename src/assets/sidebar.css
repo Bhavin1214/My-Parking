@@ -1,0 +1,8 @@
+.app-sidebar .nav-link {
+    display: flex; 
+}
+.app-sidebar.collapsed .nav-link p {
+    display: none;
+}
+
+    
