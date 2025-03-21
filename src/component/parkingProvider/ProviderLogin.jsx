@@ -5,7 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-export const Login = () => {
+export const ProviderLogin = () => {
 
   const navigate = useNavigate();
 
@@ -84,8 +84,8 @@ export const Login = () => {
               <li className="nav-item"><Link to="/features" className="nav-link text-white">Features</Link></li>
               <li className="nav-item"><Link to="/contact" className="nav-link text-white">Contact</Link></li>
               <div style={{display:"flex", flexDirection:"row", marginLeft:"550px"}}>
-                <li className="nav-item"><Link to="/login" className="btn btn-light mx-2">Login</Link></li>
-                <li className="nav-item"><Link to="/signup" className="btn btn-primary">Register</Link></li>
+                <li className="nav-item"><Link to="/provider-login" className="btn btn-light mx-2">Login</Link></li>
+                <li className="nav-item"><Link to="/provider-signup" className="btn btn-primary">Register</Link></li>
               </div>
             </ul>
           </div>
@@ -98,7 +98,7 @@ export const Login = () => {
           <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} theme="light" transition={Bounce} />
           <div className="card shadow-lg rounded-lg">
             <div className="card-header text-center bg-primary text-white">
-              <h3 className="card-title">Login</h3>
+              <h3 className="card-title"> Parking Provider Login</h3>
             </div>
             <form onSubmit={handleSubmit(submitHandler)} className="p-4">
               <div className="form-group">

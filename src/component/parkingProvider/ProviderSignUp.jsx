@@ -5,7 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-export const Signup = () => {
+export const ProviderSignUp = () => {
   const navigate = useNavigate();
 
   const showToast = (message) => {
@@ -78,8 +78,8 @@ export const Signup = () => {
                     <li className="nav-item"><Link to="/features" className="nav-link text-white">Features</Link></li>
                     <li className="nav-item"><Link to="/contact" className="nav-link text-white">Contact</Link></li>
                     <div style={{display:"flex", flexDirection:"row", marginLeft:"550px"}}>
-                      <li className="nav-item"><Link to="/login" className="btn btn-light mx-2">Login</Link></li>
-                      <li className="nav-item"><Link to="/signup" className="btn btn-primary">Register</Link></li>
+                      <li className="nav-item"><Link to="/provider-login" className="btn btn-light mx-2">Login</Link></li>
+                      <li className="nav-item"><Link to="/provider-signup" className="btn btn-primary">Register</Link></li>
                     </div>
                   </ul>
                 </div>
@@ -93,7 +93,7 @@ export const Signup = () => {
         <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} pauseOnHover theme="dark" transition={Bounce} />
         <div className="card p-3 shadow-sm" style={{ width: "90%", maxWidth: "320px", borderRadius: "10px" }}>
           <div className="card-header text-center bg-primary text-white p-2" style={{ borderRadius: "10px 10px 0 0" }}>
-            <h5>Sign Up</h5>
+            <h5>Parking Provider</h5>
           </div>
           <form onSubmit={handleSubmit(submitHandler)}>
             <div className="form-group">
@@ -127,7 +127,7 @@ export const Signup = () => {
               <span className="text-danger"> {errors.password?.message}</span>
             </div>
             <button type="submit" className="btn btn-primary btn-block btn-sm mt-2">Sign Up</button>
-            <p className="text-center mt-1 small">Already have an account? <Link to="/login">Login</Link></p>
+            <p className="text-center mt-1 small">Already have an account? <Link to="/provider-login">Login</Link></p>
           </form>
         </div>
       </div>

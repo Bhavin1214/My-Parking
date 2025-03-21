@@ -1,6 +1,4 @@
 import { useState } from 'react'
-
-import viteLogo from '/vite.svg'
 import { Routes, Route, useLocation } from "react-router-dom"
 import { Login } from './component/common/Login'
 import { UserProfile } from './component/user/UserProfile'
@@ -18,6 +16,9 @@ import PrivateRoute from './hooks/PrivateRoute'
 import { LandingPage } from './component/common/LandingPage'
 import { ViewCurrentBooking } from './component/user/ViewCurrentBooking'
 import { CancelBooking } from './component/user/CancelBooking'
+import { ProviderLogin } from './component/parkingProvider/ProviderLogin'
+import { ProviderSignUp } from './component/parkingProvider/ProviderSignUp'
+import { ProviderSidebar } from './component/parkingProvider/ProviderSidebar'
 
 
 
@@ -25,7 +26,7 @@ import { CancelBooking } from './component/user/CancelBooking'
 function App() {
 
   const location = useLocation();
-  if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/") {
+  if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname==='/provider-login'|| location.pathname==='/provider-signup') {
     document.body.className = ""
 
   } else {
@@ -39,14 +40,23 @@ function App() {
     setisopen(!isopen)
   }
 
+  const [providerIsOpen, setproviderIsOpen] = useState(true)
+
+  const clicked2 = ()=>{
+    setproviderIsOpen(!providerIsOpen)
+  }
+
+
   return (
     <>
-      <body className={`${isopen ?"":"sidebar-collapse sidebar-mini"}`}>
-        <div className={location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" ? "" : "app-wrapper"}>
+      <body className={`${isopen &&      providerIsOpen ?"":"sidebar-collapse sidebar-mini"}`}>
+        <div className={location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/" || location.pathname==='/provider-login'|| location.pathname==='/provider-signup' ? "" : "app-wrapper"}>
           <Routes>
             <Route path='/' element={<LandingPage></LandingPage>}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<Signup></Signup>}></Route>
+            <Route path='/provider-login' element={<ProviderLogin/>}></Route>
+            <Route path='/provider-signup' element={<ProviderSignUp/>}></Route>
 
             <Route to="" element={<PrivateRoute/>} >
               <Route path="/user" element={<UserSidebar clicked={clicked} />}>
@@ -57,6 +67,10 @@ function App() {
                 <Route path="profile" element={<UserProfile />}></Route>
               </Route>
             </Route>
+
+            {/* <Route to="" element={<PrivateRoute/>}> */}
+              <Route path="/provider" element={<ProviderSidebar clicked2 = {clicked2}/>}></Route>
+            {/* </Route> */}
 
           </Routes>
         </div>

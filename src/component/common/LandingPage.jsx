@@ -18,8 +18,8 @@ export const LandingPage = () => {
               <li className="nav-item"><Link className="nav-link" to="#/features">Features</Link></li>
               <li className="nav-item"><Link className="nav-link" to="#/contact">Contact</Link></li>
               <div style={{display:"flex",flexDirection:"row",marginLeft:"550px"}}>
-              <li className="nav-item"><Link className="btn btn-light mx-2" to="/login">Login</Link></li>
-              <li className="nav-item"><Link className="btn btn-primary" to="/signup">Register</Link></li>
+                <li className="nav-item"><Link className="btn btn-light mx-2" to="/login">Login</Link></li>
+                <li className="nav-item"><Link className="btn btn-primary" to="/signup">Register</Link></li>
               </div>
             </ul>
           </div>
@@ -66,6 +66,16 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Parking Provider Section */}
+      <section className="container my-5 text-center">
+        <h2>Are You a Parking Provider?</h2>
+        <p className="lead">Join us to list and manage your parking spaces with ease.</p>
+        <div className="d-flex justify-content-center">
+          <Link to="/provider-login" className="btn btn-outline-dark mx-2">Provider Login</Link>
+          <Link to="/provider-signup" className="btn btn-dark">Register as Provider</Link>
         </div>
       </section>
 
