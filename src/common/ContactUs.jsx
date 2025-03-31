@@ -20,10 +20,10 @@ export const ContactUs = () => {
         setStatus("sending");
 
         emailjs.send(
-                "service_oo362xp",   // Replace with your EmailJS Service ID
-                "template_ryamqap",  // Replace with your EmailJS Template ID
+                `${import.meta.env.VITE_EMAILJS_SERVICE_ID}`,   // Replace with your EmailJS Service ID
+                `${import.meta.env.VITE_EMAILJS_TEMPLET_ID}`,  // Replace with your EmailJS Template ID
                 formData,
-                "VkoA-7wrTWRW00VL8"    // Replace with your EmailJS Public Key
+                `${import.meta.env.VITE_EMAILJS_PUBLIC_KEY}`    // Replace with your EmailJS Public Key
             )
             .then(() => {
                 setStatus("success");
