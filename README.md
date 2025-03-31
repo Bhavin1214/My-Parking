@@ -50,6 +50,6 @@ Contributions are welcome! Please fork the repository, create a feature branch, 
 This project is licensed under the **MIT License**.
 
 ## Contact
-For any inquiries or support, feel free to reach out via email at **your-email@example.com**.
+For any inquiries or support, feel free to reach out via email at **bhavinmotka1234@gmail.com**.
 
 
