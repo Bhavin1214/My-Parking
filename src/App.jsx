@@ -19,6 +19,8 @@ import BookParking from './user/dashboard/BookParking'
 import AboutUs from './common/AboutUs'
 import { Features } from './common/Features'
 import { ContactUs } from './common/ContactUs'
+import { ProviderLogin } from './common/ProviderLogin'
+import { ProviderSignup } from './common/ProviderSignup'
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
         <Route path='/contact' element={<ContactUs/>}></Route>
         <Route path='reset-password/:token' element={<ResetPassword/>} ></Route>
         <Route path='forgot-password' element={<ForgotPassword/>}></Route>
+        <Route path='/provider-login' element={<ProviderLogin/>}></Route>
+        <Route path='/provider-signup' element={<ProviderSignup/>} ></Route>
 
         <Route element={<PrivateRoute />}>
           <Route path='/user' element={<Usernavbar />}>
