@@ -33,6 +33,26 @@ const Dashboard = () => {
       fetchSavedLocations();
     }, []);
 
+    const [totalPaid, setTotalPaid] = useState(0);
+    useEffect(() => {
+      const fetchTransactions = async () => {
+        try {
+          const res = await api.get("/transactions/user");
+          const data = res.data;
+    
+          const total = data
+            .filter(tx => tx.status === "success")
+            .reduce((acc, tx) => acc + tx.paidamount, 0);
+    
+          setTotalPaid(total);
+        } catch (err) {
+          setError("Failed to load payment history.");
+          console.error(err);
+        }
+      };
+    
+      fetchTransactions();
+    }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 pt-6">
@@ -74,7 +94,7 @@ const Dashboard = () => {
               </div>
               
             </div>
-            <p className="text-3xl font-extrabold text-gray-900">$0.00</p>
+            <p className="text-3xl font-extrabold text-gray-900">₹{totalPaid}</p>
             <button className="mt-3 text-blue-600 font-medium hover:text-blue-700 transition-all flex items-center">
               View history
               
