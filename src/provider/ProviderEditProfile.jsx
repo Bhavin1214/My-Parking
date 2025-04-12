@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../api"; 
+import api from "../api"; 
 
-const EditProfile = () => {
+const ProviderEditProfile = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ const EditProfile = () => {
     try {
       await api.put(`/auth/update-profile?token=${token}`, formData);
       alert("Profile updated successfully!");
-      navigate("/user/user-profile"); // Redirect to profile page after update
+      navigate("/provider/provider-profile"); 
     } catch (err) {
       setError("Failed to update profile. Please try again.");
     }
@@ -90,7 +90,7 @@ const EditProfile = () => {
           {loading ? "Saving..." : "Save"}
         </button>
         <button
-          onClick={() => navigate("/user/user-profile")}
+          onClick={() => navigate("/provider/provider-profile")}
           className="bg-gray-400 text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-500 transition-all text-sm"
         >
           Cancel
@@ -100,4 +100,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default ProviderEditProfile;

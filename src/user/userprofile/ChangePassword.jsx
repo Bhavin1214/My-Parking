@@ -44,7 +44,7 @@ const ChangePassword = ({ onCancel }) => {
 
   const handleForgotPassword = async () => {
     setForgotMessage("");
-    setError("");
+    setError("");       
 
     try {
       const token = localStorage.getItem("token");

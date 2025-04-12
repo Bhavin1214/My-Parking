@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaUser, FaEnvelope, FaPhone, FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import api from "../../api"; 
+import api from "../api"; 
 
-const Userprofile = () => {
+const ProviderProfile = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
@@ -54,14 +54,10 @@ const Userprofile = () => {
           <FaPhone className="text-gray-600 text-lg" />
           <p className="text-gray-800">{user.phone}</p>
         </div>
-        <div className="flex items-center space-x-3">
-          <FaUser  className="text-gray-600 text-lg" />
-          <p className="text-gray-800">{user.gender}</p>
-        </div>
       </div>
 
       {/* Edit Profile Button */}
-      <Link to='/user/edit-profile'>
+      <Link to='/provider/edit-profile'>
         <button className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg shadow-md hover:bg-blue-500 transition-all">
           Edit Profile
         </button>
@@ -70,4 +66,4 @@ const Userprofile = () => {
   );
 };
 
-export default Userprofile;
+export default ProviderProfile;

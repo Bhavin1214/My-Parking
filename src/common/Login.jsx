@@ -17,8 +17,16 @@ export const Login = () => {
 
     try {
       const response = await api.post("/auth/login", { email, password });
-      localStorage.setItem("token", response.data.token);
-      navigate("/user");
+      
+      if (response.data.user.role === "user") {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("role",response.data.user.role)
+        navigate("/user");
+      }
+      else {
+        setError("profile not found")
+      }
+      
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }

@@ -17,9 +17,16 @@ export const ProviderLogin = () => {
         setError("");
     
         try {
-          const response = await api.post("/provider/login", { email, password });
-          localStorage.setItem("token", response.data.token);
-          navigate("/provider/dashboard");
+            const role = "provider"
+          const response = await api.post("/auth/login", { email, password,role });
+          if (response.data.user.role==="provider") {
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("role", response.data.user.role)
+            navigate("/provider");
+          } else {
+            setError("profile not found")
+          }
+          
         } catch (err) {
           setError(err.response?.data?.message || "Login failed");
         }
@@ -94,7 +101,7 @@ export const ProviderLogin = () => {
                             Login
                         </button>
                     </form>
-                    <Link to="/provider/forgot-password"><p className="text-sm text-center mt-2 hover:underline">Forgot password?</p></Link>
+                    <Link to="/forgot-password"><p className="text-sm text-center mt-2 hover:underline">Forgot password?</p></Link>
                 </div>
             </div>
 

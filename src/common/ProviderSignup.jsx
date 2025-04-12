@@ -11,7 +11,8 @@ export const ProviderSignup = () => {
         name: "",
         email: "",
         phone: "",
-        password: ""
+        password: "",
+        role: "provider"
       });
       
       const [error, setError] = useState("");
@@ -32,9 +33,10 @@ export const ProviderSignup = () => {
         setError("");
       
         try {
-          const response = await api.post("/provider/signup", form); // adjust route as needed
+          const response = await api.post("/auth/register", form); // adjust route as needed
           localStorage.setItem("token", response.data.token);
-          navigate("/provider/dashboard");
+          localStorage.setItem("role",response.data.user.role)
+          navigate("/provider");
         } catch (err) {
           setError(err.response?.data?.message || "Signup failed");
         }

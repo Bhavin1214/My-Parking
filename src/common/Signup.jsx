@@ -27,6 +27,7 @@ export const Signup = () => {
     try {
       const response = await api.post("/auth/register", formData);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.user.role )
       navigate("/user");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
