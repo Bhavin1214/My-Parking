@@ -1,12 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api';
+import { CurrentBookings } from './CurrentBookings';
 
 const ProviderDashboard = () => {
   const [locationCount, setLocationCount] = useState(0);
   const [bookingCount, setBookingCount] = useState(0);
   const [earnings, setEarnings] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  
+  
+
+  useEffect(() => {
+    const fetchEarnings = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await api.get("/provider/analytics/location-wise", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        // Calculate total earnings using reduce on the retrieved data
+        const earnings = response.data.reduce(
+          (sum, location) => sum + location.totalEarnings,
+          0
+        );
+        setEarnings(earnings);
+      } catch (error) {
+        console.error("Error fetching earnings:", error);
+      } 
+      
+    };
+
+    fetchEarnings();
+  }, []);
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -15,23 +42,15 @@ const ProviderDashboard = () => {
       try {
         const locres = await api.get("/parkinglocations/getlocations",{
           headers:{Authorization:`bearer ${token}`}
-        })
-        // const [locRes, bookRes, earnRes] = await Promise.all([
-        //   api.get('/parkinglocations/getlocations', {
-        //     headers: { Authorization: `Bearer ${token}` },
-        //   }),
-        //   api.get('/provider/getbookings', {
-        //     headers: { Authorization: `Bearer ${token}` },
-        //   }),
-        //   api.get('/provider/total-earnings', {
-        //     headers: { Authorization: `Bearer ${token}` },
-        //   }),
-        // ]);
-        
+        }); 
 
+        const bookRes = await api.get("/bookings/provider-current", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        
         setLocationCount(locres.data.length);
-        // setBookingCount(bookRes.data.length);
-        // setEarnings(earnRes.data.total || 0);
+        setBookingCount(bookRes.data.length);
+        
       } catch (error) {
         console.error('Error fetching provider dashboard stats:', error);
       } finally {
@@ -74,9 +93,9 @@ const ProviderDashboard = () => {
 
         {/* Recent Bookings Section */}
         <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6 mb-8">
-          <h2 className="text-lg font-semibold text-gray-700 mb-4">Recent Bookings</h2>
-          <p className="text-gray-500">This section can display recent bookings across your listed parking spots.</p>
-          <Link to="/provider/bookings">
+          
+          <CurrentBookings />
+          <Link to="/provider/current-bookings">
             <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-500 transition-all">
               View All Bookings
             </button>
