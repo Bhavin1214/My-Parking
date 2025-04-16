@@ -64,7 +64,7 @@ const AddParking = () => {
     };
 
     try {
-      console.log("123");
+
       
       const response = await api.post(
         '/parkingLocations/createlocations',

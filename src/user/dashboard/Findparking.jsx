@@ -33,7 +33,7 @@ export const Findparking = () => {
       <div className="bg-white rounded-xl shadow-md border mx-[100px] border-gray-200 p-6">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">Find Parking</h2>
         <form className="space-y-5" onSubmit={handleSearch}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
             {/* Location */}
             <div>
               <label className="block text-sm text-gray-600 mb-2">Location</label>
@@ -46,14 +46,14 @@ export const Findparking = () => {
               />
             </div>
             {/* Date */}
-            <div>
+            {/* <div>
               <label className="block text-sm text-gray-600 mb-2">Date</label>
               <input
                 type="date"
                 defaultValue="2025-03-24"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               />
-            </div>
+            </div> */}
             {/* Start Time */}
             {/* <div>
               <label className="block text-sm text-gray-600 mb-2">Start Time</label>
