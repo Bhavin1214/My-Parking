@@ -73,12 +73,12 @@ export const ProviderSignup = () => {
                 {/* Mobile Menu */}
                 {menuOpen && (
                     <div className="md:hidden bg-gray-800 text-white py-4 px-6 absolute top-16 w-full flex flex-col space-y-4">
-                        <Link className="hover:text-blue-400 transition duration-300" to="" onClick={() => setMenuOpen(false)}>Home</Link>
-                        <Link className="hover:text-blue-400 transition duration-300" to="#about" onClick={() => setMenuOpen(false)}>About</Link>
-                        <Link className="hover:text-blue-400 transition duration-300" to="#features" onClick={() => setMenuOpen(false)}>Features</Link>
-                        <Link className="hover:text-blue-400 transition duration-300" to="#contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-                        <Link className="bg-white text-gray-900 px-4 py-2 rounded-lg shadow-md hover:bg-gray-300 transition duration-300 text-center" to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
-                        <Link className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 text-center" to="/signup" onClick={() => setMenuOpen(false)}>Register</Link>
+                        <Link className="hover:text-blue-400 transition duration-300" to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+                        <Link className="hover:text-blue-400 transition duration-300" to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+                        <Link className="hover:text-blue-400 transition duration-300" to="/features" onClick={() => setMenuOpen(false)}>Features</Link>
+                        <Link className="hover:text-blue-400 transition duration-300" to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+                        <Link className="bg-white text-gray-900 px-4 py-2 rounded-lg shadow-md hover:bg-gray-300 transition duration-300 text-center" to="/provider-login" onClick={() => setMenuOpen(false)}>Login</Link>
+                        <Link className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 text-center" to="/provider-signup" onClick={() => setMenuOpen(false)}>Register</Link>
                     </div>
                 )}
             </nav>
@@ -134,7 +134,7 @@ export const ProviderSignup = () => {
                     </form>
                     <p className="text-sm text-center mt-3">
                         Already have an account?{" "}
-                        <Link to="/provider/login" className="text-blue-400 hover:underline">Login here</Link>
+                        <Link to="/provider-login" className="text-blue-400 hover:underline">Login here</Link>
                     </p>
                 </div>
             </div>
